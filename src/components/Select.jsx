@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Icon from "./Icon";
-import { COLORS, WEIGHTS } from "../constants";
+import { COLORS, Quiries, WEIGHTS } from "../constants";
 import React from "react";
 
 const SelectMenu = ({ children, label, value, ...delegated }) => {
@@ -26,6 +26,9 @@ const SelectMenu = ({ children, label, value, ...delegated }) => {
 
 const Wrapper = styled.label`
     width: fit-content;
+    @media ${Quiries["mobile-and-down"]}{
+        display: none;
+    }
 `;
 const Label = styled.span`
     font-size: ${16 / 18}rem;

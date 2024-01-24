@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { COLORS, WEIGHTS } from "../constants";
+import { COLORS, Quiries, WEIGHTS } from "../constants";
 import VisuallyHidden from "./VisuallyHidden";
 import Icon from "./Icon";
 const SupperHeader = () => {
@@ -26,6 +26,9 @@ const Wrapper = styled.div`
     background-color: ${COLORS.gray[900]};
     color: ${COLORS.white};
     font-size: ${14 / 16}rem;
+    @media ${Quiries["laptop-and-down"]} {
+        display: none;
+    }
 `;
 
 const Label = styled.label`

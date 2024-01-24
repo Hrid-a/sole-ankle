@@ -1,10 +1,12 @@
-import { Search, ShoppingBag, ChevronDown } from 'react-feather';
+import { Search, ShoppingBag, ChevronDown, Menu, X } from 'react-feather';
 import styled from 'styled-components';
 
 const ICONS = {
     search: Search,
     'shopping-bag': ShoppingBag,
     'chevron-down': ChevronDown,
+    menu: Menu,
+    'dismiss-icon': X,
 }
 const Icon = ({ icon, size, strokeWidth, color, ...delegated }) => {
 
@@ -21,5 +23,6 @@ const Wrapper = styled.div`
         stroke-width: ${p => p.strokeWidth}px;
         display: block;
     }
+    cursor: pointer;
 `;
 export default Icon

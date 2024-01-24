@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLORS } from "../constants";
+import { COLORS, Quiries } from "../constants";
 const Aside = () => {
     return (
         <Wrapper>
@@ -20,7 +20,10 @@ const Aside = () => {
 
 const Wrapper = styled.aside`
     padding-top: 35px; 
-    color: ${COLORS.gray[900]}
+    color: ${COLORS.gray[900]};
+    @media ${Quiries["tablet-and-down"]}{
+        display: none;
+    }
 `;
 const Link = styled.a`
     display: block;

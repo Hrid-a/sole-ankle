@@ -16,3 +16,10 @@ export const WEIGHTS = {
   medium: 600,
   bold: 800,
 };
+
+export const Quiries =
+{
+  'mobile-and-down': `(max-width: ${600 / 16}rem)`,
+  'tablet-and-down': `(max-width: ${950 / 16}rem)`,
+  'laptop-and-down': `(max-width: ${1300 / 16}rem)`
+}

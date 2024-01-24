@@ -2,7 +2,7 @@ import styled from "styled-components"
 import Aside from "./Aside";
 import BreadCrumbs from "./BreadCrumbs";
 import SelectMenu from "./Select";
-import { WEIGHTS } from "../constants";
+import { Quiries, WEIGHTS } from "../constants";
 import ShoeGrid from "./ShoeGrid";
 const ShoeIndex = ({ sortId, setSortId }) => {
 
@@ -38,6 +38,7 @@ const Wrapper = styled.div`
     display: flex;
     gap: 32px;
     flex-direction: row-reverse;
+    position: relative;
 `;
 const MainColumn = styled.article`
     flex: 3;
@@ -54,5 +55,10 @@ const Title = styled.span`
 `;
 const LeftColumn = styled.article`
     flex:1;
+    @media ${Quiries["tablet-and-down"]}{
+        position: absolute;
+        left: 0;
+        top: -16px;
+    }
 `;
 export default ShoeIndex
