@@ -29,9 +29,9 @@ const ShoeCard = ({ slug, name, imageSrc, price, salePrice, releaseDate, numOfCo
         <Link href={slug}>
             <Wrapper>
                 <ImgaeWrapper>
-                    <Variant style={{ '--bg-color': component.bg }} >{component.text}</Variant>
                     <Image src={imageSrc} />
                 </ImgaeWrapper>
+                <Variant style={{ '--bg-color': component.bg }} >{component.text}</Variant>
                 <Row>
                     <Name>{name}</Name>
 
@@ -57,11 +57,12 @@ const Link = styled.a`
 
 const Wrapper = styled.article`
     border-radius: 8px;
-    /* overflow: hidden; */
+    position: relative;
     `;
+
 const ImgaeWrapper = styled.div`
     margin-bottom: 10px;
-    position: relative;
+    overflow: hidden;
     `;
 const Variant = styled.span`
     position: absolute;
@@ -76,8 +77,20 @@ const Variant = styled.span`
     border-radius: 2px;
     `;
 const Image = styled.img`
-border-radius: 8px 8px 0px 0px;
-    width:100%
+    display: block;
+    border-radius: 8px 8px 0px 0px;
+    width:100%;
+    will-change: transform;
+    transition: transform 500ms ease-out;
+    transform-origin: 50% 75%;
+    @media (prefers-reduced-motion: no-preference){
+
+        ${Link}:hover & {
+            transform: scale(1.1);
+            transition: transform 250ms ease-in;
+        }
+    }
+    
 `;
 const Row = styled.div`
     display: flex;

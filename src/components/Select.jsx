@@ -9,7 +9,6 @@ const SelectMenu = ({ children, label, value, ...delegated }) => {
         (child) => child.props.value === value
     );
 
-    console.log(selectedChild);
     const displayedValue = selectedChild.props.children;
 
     return (

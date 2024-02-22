@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Icon from "./Icon";
 import { COLORS } from "../constants";
 
@@ -9,25 +9,45 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
         <Wrapper>
             <Overlay />
             <MainWrapper>
+                <Content>
 
-                <DismissIcon icon={"dismiss-icon"} onClick={onDismiss} size={16} />
-                <Navigation>
-                    <ActiveLink href="/sale">Sale</ActiveLink>
-                    <NavigationLink href="/new">New&nbsp;Releases</NavigationLink>
-                    <NavigationLink href="/men">Men</NavigationLink>
-                    <NavigationLink href="/women">Women</NavigationLink>
-                    <NavigationLink href="/kids">Kids</NavigationLink>
-                    <NavigationLink href="/collections">Collections</NavigationLink>
-                </Navigation>
-                <Footer>
-                    <NavigationLink href="/terms">Terms and Conditions</NavigationLink>
-                    <NavigationLink href="/privacy">Privacy Policy</NavigationLink>
-                    <NavigationLink href="/contact">Contact Us</NavigationLink>
-                </Footer>
+                    <DismissIcon icon={"dismiss-icon"} onClick={onDismiss} size={16} />
+                    <Navigation>
+                        <ActiveLink href="/sale">Sale</ActiveLink>
+                        <NavigationLink href="/new">New&nbsp;Releases</NavigationLink>
+                        <NavigationLink href="/men">Men</NavigationLink>
+                        <NavigationLink href="/women">Women</NavigationLink>
+                        <NavigationLink href="/kids">Kids</NavigationLink>
+                        <NavigationLink href="/collections">Collections</NavigationLink>
+                    </Navigation>
+                    <Footer>
+                        <NavigationLink href="/terms">Terms and Conditions</NavigationLink>
+                        <NavigationLink href="/privacy">Privacy Policy</NavigationLink>
+                        <NavigationLink href="/contact">Contact Us</NavigationLink>
+                    </Footer>
+                </Content>
             </MainWrapper>
         </Wrapper>
     )
 }
+
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+`;
+
+const slideIn = keyframes`
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+`;
 
 const Wrapper = styled.div`
 /* position: relative; */
@@ -36,6 +56,7 @@ const Overlay = styled.div`
     position: fixed;
     inset: 0;
     background-color: rgba(96, 100, 108, 0.80);
+    animation: ${fadeIn} 500ms;
 `;
 const MainWrapper = styled.div`
 
@@ -43,15 +64,22 @@ const MainWrapper = styled.div`
     min-height: 100dvh;
     min-height: 100dvh;
     padding: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     position: fixed;
     top: 0;
     right: 0;
-    width: 75%;
-
+    width: 300px;
+    animation: ${slideIn} 500ms ease-out both;
+    animation-delay: 250ms;
     
+`;
+const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100dvh;
+    min-height: 100dvh;
+    animation: ${fadeIn} 600ms both;
+    animation-delay: 400ms;
 `;
 const DismissIcon = styled(Icon)`
     position: absolute;

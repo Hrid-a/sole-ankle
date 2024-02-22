@@ -5,6 +5,7 @@ import Icon from "./Icon";
 import { useState } from "react";
 import MobileMenu from "./MobileMenu";
 import { createPortal } from "react-dom";
+import NavigationLink from "./NavigationLink";
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
     return (
@@ -16,12 +17,37 @@ const Header = () => {
                 </Logo>
                 <Navigation>
                     <ul>
-                        <li>sale</li>
-                        <li>new releases</li>
-                        <li>men</li>
-                        <li>women</li>
-                        <li>kids</li>
-                        <li>collections</li>
+                        <li>
+                            <NavigationLink href="">
+
+                                sale
+                            </NavigationLink>
+                        </li>
+                        <li>
+                            <NavigationLink href="">
+                                new releases
+                            </NavigationLink>
+                        </li>
+                        <li>
+                            <NavigationLink href="">
+                                men
+                            </NavigationLink>
+                        </li>
+                        <li>
+                            <NavigationLink href="">
+                                women
+                            </NavigationLink>
+                        </li>
+                        <li>
+                            <NavigationLink href="">
+                                kids
+                            </NavigationLink>
+                        </li>
+                        <li>
+                            <NavigationLink href="">
+                                collections
+                            </NavigationLink>
+                        </li>
                     </ul>
                 </Navigation>
                 <IconsWrapper >
@@ -62,12 +88,10 @@ const Navigation = styled.nav`
         gap: 48px;
         align-items: baseline;
         color: ${COLORS.gray[900]};
-        font-size: ${18 / 16}rem;
-        font-weight: ${WEIGHTS.normal};
-        text-transform: uppercase;
-        & >li:first-of-type {
-            color: ${COLORS.secondary};
+        & li:first-of-type {
+        color: ${COLORS.secondary};
         }
+        
     }
     @media ${Quiries["laptop-and-down"]} {
         display: none;

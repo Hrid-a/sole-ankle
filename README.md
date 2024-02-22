@@ -1,31 +1,14 @@
-# Sole&Ankle — Module 4 workshop
+# Sole&Ankle, Animated — Module 8 workshop
 
-In this workshop, our goal is to finish building an e-commerce store!
+Once again, we're working on the sneaker store!
 
-The good news is, most of our work is done already. We just need to write some additional CSS to construct the layout; things are a bit messy right now!
+![A screenshot of the original Flexbox module workshop](./docs/original-desktop.png)
 
-- Access the Figma: https://www.figma.com/file/kAL3AumTUV11y1IqHhltB6/Sole-and-Ankle-%E2%80%94-Mockup
+In this workshop, we're going to use our newly-acquired animation skills to breathe some life into this application.
 
-This project uses Create React App. To get started, run the following terminal commands:
+**Some parts of this workshop are unguided.** Each exercise will challenge you to go beyond the stated goal, to come up with your own twist on the interaction.
 
-- `npm install`
-- `npm run start`
-
-You can then visit the app in-browser; it defaults to http://localhost:3000.
-
-_Note that we're only focusing on the design._ The links and inputs don't do anything.
-
-> **Want a bigger challenge?**
->
-> This workshop comes with a lot of starter code — we'll be adding
-> Flex-specific properties, but for the most part, we don't have a
-> ton of code to write. If you'd prefer, you can build the app from
-> scratch, to practice all the CSS we've learned so far!
->
-> If you go that route, you can find the sneaker assets you need in
-> `/public/assets`, and their metadata in `/src/data.js`. Design
-> tokens can be found in `/src/constants`. The custom font is
-> Raleway, from Google Fonts.
+Also, **don't forget about accessibility.** Significant motion should be disabled by default, and only enabled based on the `prefers-reduced-motion` media query.
 
 ## Troubleshooting
 
@@ -35,69 +18,72 @@ This guide addresses the common `Digital Envelope Routine` error you may have se
 
 ---
 
-## Exercise 1: Superheader
+## Exercise 1: Sneaker Zoom
 
-Let's build the “Superheader” a thin grey strip that runs along the top of the page:
+Add a hover/focus interaction to the sneakers so that the image zooms in slightly:
 
-![Close-up screenshot of the superheader](./docs/exercise-1-solution.png)
+![Exercise 1 solution](./docs/ex1-solution.gif)
 
-Use Flexbox to correctly align the elements within `src/components/SuperHeader`.
+This might seem like a small task, but there are lots of little details that make it tricky. Pay close attention to the GIF. Some things to watch out for:
 
-## Exercise 2: Header
+- The enter transition should be faster than the exit transition
+- The "flags" for new releases and sales should hang over the edge of the photo, as they do initially.
+- The corners should remain perfectly round at all times.
+- The shoes aren't centered within the photos, so if you zoom into the center of the photo, the shoe will appear to drop lower. Tweak the animation so that it zooms in on the shoe.
 
-Continuing on down, let's tackle the main header:
+The relevant component is `ShoeCard.js`.
 
-![Close-up screenshot of the header and superheader](./docs/exercise-2-solution.png)
+### Stretch Goal
 
-The trickiest part of this exercise is the _position of the main navigation_. We want it to be perfectly centered within the container:
+Once you've matched the GIF above, it's time to get creative. Change or extend the animation. Experiment with different techniques and properties!
 
-![Screenshot showing the position of the navigation within the header](./docs/nav-position.png)
+Here are some ideas:
 
-This is a thorny problem, and it's not something we've explicitly seen in the course. Give it your best shot, but please don't be discouraged if you can't figure it out!
+- In addition to the photo zoom, tweak the new/sale flags in some way.
+- Use a CSS filter on the photo.
 
-## Exercise 3: Shell
+---
 
-Next up, we want to tackle the "framing" around the shoe grid — the sidebar and title/filter.
+## Exercise 2: Navigation link flip-up
 
-![Screenshot of the store, with everything except the sneaker grid](./docs/exercise-3-solution.png)
+When hovering over the navigation links on desktop, they should "flip up", revealing a bold copy underneath:
 
-_NOTE:_ To make life a bit easier, you may wish to comment out the `<ShoeGrid>` component. We'll work on integrating it in the next exercise.
+![Exercise 2 solution](./docs/ex2-solution.gif)
 
-## Exercise 4: Shoe Grid
+In order to accomplish this challenge, **you'll need to tweak the JSX.** There's no way to solve this problem in CSS alone. In particular, you'll need to duplicate the text inside each navigation link.
 
-This exercise features two mini-challenges. The second one is a chance to revisit some of the lessons learned in previous modules, and isn't as specific to Flexbox.
+The relevant component is `Header.js`. You may wish to create a new `NavLink` component, though it isn't required.
 
-### 4A: Grid layout
+### Stretch Goal
 
-Time to tackle the main feature of this application, the shoes!
+Here's a list of over a dozen link hover animations: https://tympanus.net/Development/CreativeLinkEffects/
 
-Here's a screenshot of the final result:
+Try and implement another effect from the list!
 
-![Screenshot of the store, with sneaker grid](./docs/exercise-4a-solution.png)
+---
 
-This is a tricky problem to solve with Flexbox—CSS Grid is a better tool for this job! Nevertheless, it can be done using Flexbox, with one caveat: the last row may be oversized:
+## Exercise 3: Modal enter animation
 
-![Screenshot of the shoe grid with one enormous sneaker, spanning 4 typical columns](./docs/giant-sneaker.png)
+On mobile, add the following animations to the hamburger menu:
 
-In a future module, we'll revisit this and see how CSS Grid can help us out :)
+![Exercise 3 solution](./docs/ex3-solution.gif)
 
-## 4B: Final touches
+This effect consists of 3 individual animations:
 
-Our sneaker store is in pretty good shape, but there's two small details missing:
+1. The backdrop fades in.
+2. The drawer slides in from the right.
+3. The drawer's contents fade in.
 
-1. The “Sale” and “Just Released” flags.
-1. The crossed-out prices, for items that are on sale.
+For bonus points, use a custom easing curve on the slide-in animation. You can configure one using this tool: https://cubic-bezier.com.
 
-Inside `ShoeCard.js`, you'll find a `variant` variable you can use to figure out which flag, if any, needs to be rendered. It's up to you to create the flag, using styled-components.
+Don't worry about the exit animation; exit animations are difficult in React, and require a library like [React transition group](https://reactcommunity.org/react-transition-group/).
 
-For the crossed-out prices, you can use the `price` and `salePrice` props.
+The relevant component is `MobileMenu.js`.
 
-![Screenshot of the store, with the final details added](./docs/exercise-4b-solution.png)
+### Stretch Goal
 
-_NOTE:_ This exercise has minimal flexbox implications, and is mainly about revisiting lessons learned in the previous modules (including positioned layout and styled-components). Feel free to skip it if you'd prefer!
+Here are some ideas:
 
-## To be continued!
-
-Our sneaker store can flex to support different screen sizes, but there isn't a proper mobile or tablet view. Don't fret — we will revisit this workshop in a future module!
-
-In the meantime, take a moment to congratulate yourself for making it through the Flexbox module!!
+- Experiment with different orchestrations, animating different elements at different times
+- Use a 3D transform on the drawer so that it swings in like a door closing rather than sliding in from offscreen
+- Instead of fading in all of the drawer's contents at once, add a staggered fade to the individual navigation links so that they fade in one by one, from the top down
